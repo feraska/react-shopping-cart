@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.layout{
+    display: grid;
+    grid-template-areas:
+    "header"
+    "main"
+    "footer";
+    height:100%;
+    grid-template-rows: 80px 1fr 80px;
+}
+header{
+    grid-area: header;
+}
+main{
+    grid-area: main;
+}
+footer{
+    grid-area:footer;
+}
+#root{
+    height: 100vh;
+  
+}

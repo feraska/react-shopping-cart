@@ -26,3 +26,14 @@ footer{
     height: 100vh;
   
 }
+.wrapper{
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    .filter-wrapper{
+        width:30%;
+    }
+    .products-wrapper{
+        width:68%;
+        }
+}

@@ -2,15 +2,22 @@
 import './App.scss';
 import Header from './components/Header/Header';
 import Footer from "./components/Footer/Footer";
+import { useState } from 'react';
+import data from "./data.json"
+import Products from './components/Products/Products';
 
 function App() {
+  const[products,setProducts]= useState(data);
   return (
 
      <div className="layout">
       
      <Header/>
       <main>
-        Content
+        <div className='wrapper'>
+         <Products products={products}/>
+          <div className='filter-wrapper'>Filter</div>
+        </div>
       </main>
       <Footer/>
      </div>

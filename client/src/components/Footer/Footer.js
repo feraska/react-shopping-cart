@@ -1,9 +1,10 @@
 import React from "react"
+import { words } from "../../words"
 import "./Footer.scss"
 const Footer=()=>{
     return(
     <footer>
-        &copy;feras kasabri 2022
+        {words.footerTitle}
     </footer>
     )
 }

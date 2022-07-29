@@ -7,6 +7,7 @@ function App() {
   return (
 
      <div className="layout">
+      
      <Header/>
       <main>
         Content

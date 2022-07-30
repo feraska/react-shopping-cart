@@ -1,11 +1,13 @@
 import React from "react"
 import "./Filter.scss"
+import { Flip } from "react-awesome-reveal";
 const Filter=(props)=>{
     const{handleFilterBySize,size}=props;
     const{handleFilterByOrder,sort}=props;
     const{productsNumber}=props;
     return(
-        <div className="filter-wrapper">
+     <Flip className="filter-wrapper" left>
+           <div >
             <h2 className="filter-title">Filter</h2>
             <div className="num-of-products">Number of Products: {productsNumber}</div>
             <div className="filter-by-size">
@@ -31,6 +33,7 @@ const Filter=(props)=>{
             </div>
 
         </div>
+     </Flip>
     )
 }
 export default Filter

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Checkout from "../CheckoutForm/Checkout";
 import "./Cart.scss"
+import { Bounce } from "react-awesome-reveal";
 const Cart=(props)=>{
     const[showForm,setShowForm]=useState(false);
     const[value,setValue]=useState("");
@@ -19,11 +20,14 @@ const Cart=(props)=>{
     }
     return(
         
-        <div className="cart-wrapper">
+    
+          <div className="cart-wrapper">
         <div className="cart-title">{cartItems.length==0?'Cart Empty':
         <p>There is {cartItems.length} products in cart</p>}
         </div>
-        <div className="cart-items">
+        
+        <div >
+        <Bounce bottom cascade>
             {cartItems.map(item=>(
                 <div className="cart-item" key={item.id}>
                 <img src={item.imageUrl} alt=""/>
@@ -38,7 +42,9 @@ const Cart=(props)=>{
                 </div>
             </div>
             ))}
+            </Bounce>
         </div>
+        
         {
                 cartItems.length!==0&&(
                  <div className="cart-footer"> 
@@ -56,6 +62,7 @@ const Cart=(props)=>{
        
 
         </div>
+   
     )
 }
 export default Cart

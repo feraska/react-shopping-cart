@@ -1,0 +1,25 @@
+.filter-wrapper{
+    background-color: white;
+    border:1px solid black;
+    display: flex;
+    flex-direction: column;
+
+    .filter-title{
+        background-color: lightblue;
+        padding: 10px;
+        color: lightcoral;
+        margin-bottom:20px;
+    }
+    >div{
+        padding: 5px 20px;
+        margin-bottom: 13px;
+    }
+    select{
+        display: block;
+        height: 40px;
+        border: 1px solid lightgray;
+        width: 100%;
+        border-radius: 5px;
+    }
+}
+

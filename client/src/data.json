@@ -7,5 +7,14 @@
         "price":30,
         "sizes":["S","M"]
 
+    },
+    {
+        "id":"id2",
+        "title":"product2",
+        "imageUrl":"images/id1.jpg",
+        "desc":"good",
+        "price":20,
+        "sizes":["L"]
+
     }
 ]

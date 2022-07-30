@@ -4,7 +4,7 @@ import { useState } from "react";
 import ProductModal from "./ProductModal"
 const Products=(props)=>{
 const {products}=props;
-const [product,setProduct]=useState("");
+const [product,setProduct]=useState(false);
 const openModal=(product)=>{
     setProduct(product)
 }

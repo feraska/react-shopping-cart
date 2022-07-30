@@ -7,6 +7,7 @@ import data from "./data.json"
 import Products from './components/Products/Products';
 import Filter from './components/Filter/Filter';
 import Cart from './components/Cart/Cart';
+import Checkout from './components/CheckoutForm/Checkout';
 
 function App() {
   const[products,setProducts]= useState(data);
@@ -66,10 +67,11 @@ function App() {
     localStorage.setItem('cartItems',JSON.stringify(cartItems))
   })
   return (
-
+    
      <div className="layout">
       
      <Header/>
+     
       <main>
         <div className='wrapper'>
          <Products products={products} addToCart={addToCart}/>

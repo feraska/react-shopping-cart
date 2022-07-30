@@ -1,6 +1,22 @@
+import { useState } from "react";
+import Checkout from "../CheckoutForm/Checkout";
 import "./Cart.scss"
 const Cart=(props)=>{
+    const[showForm,setShowForm]=useState(false);
+    const[value,setValue]=useState("");
     const {cartItems,removeFromCart}=props;
+    const handleChange=(e)=>{
+            setValue((prevState)=>({...prevState,[e.target.name]:e.target.value}))
+    }
+    const submitOrder=(e)=>{
+        e.preventDefault();
+        const order={
+            name:value.name,
+            email:value.email
+        }
+        console.log(order)
+
+    }
     return(
         
         <div className="cart-wrapper">
@@ -23,6 +39,22 @@ const Cart=(props)=>{
             </div>
             ))}
         </div>
+        {
+                cartItems.length!==0&&(
+                 <div className="cart-footer"> 
+                 <div className="total">Total :${cartItems.reduce((acc,p)=>{
+                    return acc+p.price
+                 },0)}</div>
+                 <button onClick={()=>setShowForm(true)}> select Products </button>
+                 </div>
+                )
+        }
+       <Checkout setShowForm={setShowForm}
+       submitOrder={submitOrder}
+        handleChange={handleChange}
+        showForm={showForm} />
+       
+
         </div>
     )
 }

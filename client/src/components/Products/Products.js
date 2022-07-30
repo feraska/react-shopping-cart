@@ -1,5 +1,5 @@
 import "./Products.scss"
-
+import Bounce from "react-awesome-reveal";
 import { useState } from "react";
 import ProductModal from "./ProductModal"
 const Products=(props)=>{
@@ -12,6 +12,7 @@ const closeModal=()=>{
     setProduct(false)
 }
     return(
+        <Bounce className="products-wrapper" left cascade>
          <div className='products-wrapper'>{products.map(product=>(
             <div key={product.id}>
                 <div className="products-item">
@@ -28,7 +29,7 @@ const closeModal=()=>{
          ))}
          <ProductModal product={product} closeModal={closeModal}/>
          </div>
-            
+         </Bounce> 
          )
 
         

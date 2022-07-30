@@ -3,10 +3,11 @@ import "./Filter.scss"
 const Filter=(props)=>{
     const{handleFilterBySize,size}=props;
     const{handleFilterByOrder,sort}=props;
+    const{productsNumber}=props;
     return(
         <div className="filter-wrapper">
             <h2 className="filter-title">Filter</h2>
-            <div className="num-of-products">Number of Products</div>
+            <div className="num-of-products">Number of Products: {productsNumber}</div>
             <div className="filter-by-size">
             <span>Filter</span>
             <select className="filter-select" value={size} onChange={handleFilterBySize}>

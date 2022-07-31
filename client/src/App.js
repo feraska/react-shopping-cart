@@ -8,6 +8,8 @@ import Products from './components/Products/Products';
 import Filter from './components/Filter/Filter';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/CheckoutForm/Checkout';
+import store from './store/store';
+import { Provider } from 'react-redux';
 
 function App() {
   const[products,setProducts]= useState(data);
@@ -67,7 +69,7 @@ function App() {
     localStorage.setItem('cartItems',JSON.stringify(cartItems))
   })
   return (
-    
+    <Provider store={store}>
      <div className="layout">
       
      <Header/>
@@ -85,8 +87,9 @@ function App() {
       </main>
       <Footer/>
      </div>
-  
+     </Provider>
   );
+  
 }
 
 export default App;

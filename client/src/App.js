@@ -1,5 +1,6 @@
 
 import './App.scss';
+
 import Header from './components/Header/Header';
 import Footer from "./components/Footer/Footer";
 import { useEffect, useState } from 'react';
@@ -12,6 +13,7 @@ import store from './store/store';
 import { Provider } from 'react-redux';
 
 function App() {
+ 
   const[products,setProducts]= useState(data);
   const[sort,setSort]=useState("");
   const [size,setSize]=useState("");
@@ -66,6 +68,7 @@ function App() {
     setCartItems(cartItemsClone.filter(p=>p.id!==product.id))
   }
   useEffect(()=>{
+    
     localStorage.setItem('cartItems',JSON.stringify(cartItems))
   })
   return (

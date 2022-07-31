@@ -1,25 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice  } from '@reduxjs/toolkit'
+import axios from "axios";
 
 
 export const productSlice = createSlice({
   name: 'product',
   initialState:{
-    count:0
+    data:[],
+    loading:false,
+    error:false
   },
   reducers: {
-    increment: (state) => {
-   
-      state.count += 1
+    
+    startProduct:(state)=>{
+        state.loading=true;
     },
-    decrement: (state) => {
-      state.count -= 1
+    successProduct:(state,action)=>{
+        state.loading=false;
+        state.data=action.payload;
     },
-    incrementByAmount: (state, action) => {
-      state.count += action.payload
-    },
+    errorProduct:(state)=>{
+        state.loading=false;
+        state.error=true;
+    }
+    
   },
 })
 
-export const { increment, decrement, incrementByAmount } = productSlice.actions
+export const {  startProduct,successProduct,errorProduct} = productSlice.actions
 
 export default productSlice.reducer

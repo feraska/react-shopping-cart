@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import productSlice from "./productSlice"
+import logger from 'redux-logger'
 
 
-const store=configureStore({
+const store=configureStore(
+    {
+        
+         
     reducer:{
         product:productSlice,
     }

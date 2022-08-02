@@ -2,7 +2,9 @@ import { useState } from "react";
 import Checkout from "../CheckoutForm/Checkout";
 import "./Cart.scss"
 import { Bounce } from "react-awesome-reveal";
+import Modal from "react-modal"
 const Cart=(props)=>{
+    const [order,setOrder]=useState("");
     const[showForm,setShowForm]=useState(false);
     const[value,setValue]=useState("");
     const {cartItems,removeFromCart}=props;
@@ -15,8 +17,11 @@ const Cart=(props)=>{
             name:value.name,
             email:value.email
         }
-        console.log(order)
-
+        setOrder(order)
+    
+    }
+    const closeModal=()=>{
+        setOrder(false)
     }
     return(
         
@@ -25,8 +30,42 @@ const Cart=(props)=>{
         <div className="cart-title">{cartItems.length==0?'Cart Empty':
         <p>There is {cartItems.length} products in cart</p>}
         </div>
+        <Modal isOpen={order} onRequestClose={closeModal}>
+        <div className="order-info">
+            <span className="close-icon" onClick={closeModal}>&times;</span>
+            <p className="alert-success">Order done success</p>
+            <table>
+                <tr>
+                    <td> Name: </td>
+                    <td> {order.name} </td>
+                </tr>
+                <tr>
+                    <td> Email: </td>
+                    <td> {order.email} </td>
+                </tr>
+                <tr>
+                    <td> Total: </td>
+                    <td> {props.cartItems.reduce((a,p)=>{
+                        return a + p.price
+                    },0)} </td>
+                </tr>
+                <tr>
+                    <td>
+                        Selected Items:
+                    </td>
+                    <td>
+                        {props.cartItems.map(p=>(
+                            <div className="cart-data">
+                                <p>Number of product {p.qty}</p>
+                                <p>Title of product {p.title}</p>
+                            </div>
+                        ))}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        </Modal>
         
-        <div >
         <Bounce bottom cascade>
             {cartItems.map(item=>(
                 <div className="cart-item" key={item.id}>
@@ -43,7 +82,7 @@ const Cart=(props)=>{
             </div>
             ))}
             </Bounce>
-        </div>
+        
         
         {
                 cartItems.length!==0&&(

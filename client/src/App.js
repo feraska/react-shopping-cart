@@ -13,12 +13,27 @@ import store from './store/store';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { getAllProduct } from './store/productApi';
 import Home from "./pages/Home/Home"
+import {BrowserRouter, NavLink, Route,Routes} from "react-router-dom";
+import Orders from './pages/Order/Orders';
+import './components/Header/Header.scss'
+import './components/Footer/Footer.scss'
+import NavBar from './components/NavBar/NavBar';
 function App() {
  
   return (
+    <BrowserRouter>
     <Provider store={store}>
-     <Home/>
+      <Header/>
+      
+      <NavBar/>
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/orders' element={<Orders/>} />
+      </Routes>
+     
+     <Footer/>
      </Provider>
+    </BrowserRouter>
   );
   
 }

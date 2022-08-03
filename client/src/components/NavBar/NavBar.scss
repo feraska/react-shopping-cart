@@ -1,0 +1,21 @@
+.nav .active{
+    background-color: red;
+}
+.nav ul{
+    display: flex;
+    background-color: black;
+    list-style: none;
+    padding: 10px 35px;
+ li a{
+    display: block;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    margin-right: 5px;
+    text-decoration: none;
+    width: 100%;
+    &:hover{
+        background-color: blue;
+    }
+}
+}

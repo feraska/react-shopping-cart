@@ -7,8 +7,10 @@ header{
     font-size: 20px;
     color: white;
     height: 50px;
-   // position: fixed;
-   // width: 100%;
+    
+    width: 100%;
+    //padding-top: 0;
+    //top: 0;
     &:hover{
         background-color: blue;
     }

@@ -81,7 +81,7 @@ const Home=(props)=>{
     return(
         <div className="layout">
       
-     <Header/>
+     
      
       <main>
         <div className='wrapper'>
@@ -94,7 +94,7 @@ const Home=(props)=>{
         </div>
         <Cart cartItems={cartItems} removeFromCart={removeFromCart}/>
       </main>
-      <Footer/>
+      
      </div>
     )
 

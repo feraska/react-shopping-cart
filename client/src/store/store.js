@@ -3,6 +3,7 @@ import productSlice from "./productSlice"
 import logger from 'redux-logger'
 import filterSlice from './filterSlice';
 import cartSlice from './cartSlice';
+import orderSlice from './orderSlice';
 
 
 const store=configureStore(
@@ -12,7 +13,9 @@ const store=configureStore(
     reducer:{
         product:productSlice,
         filter:filterSlice,
-        cart:cartSlice
+        cart:cartSlice,
+        order:orderSlice,
+
         
     }
 });

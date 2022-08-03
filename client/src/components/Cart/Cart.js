@@ -4,11 +4,14 @@ import "./Cart.scss"
 import { Bounce } from "react-awesome-reveal";
 import Modal from "react-modal"
 import CartModal from "./CartModal";
+import { getOrder, postOrder } from "../../store/orderApi";
+import { useDispatch } from "react-redux";
 const Cart=(props)=>{
     const [order,setOrder]=useState("");
     const[showForm,setShowForm]=useState(false);
     const[value,setValue]=useState("");
     const {cartItems,removeFromCart}=props;
+    const dispatch=useDispatch();
     const handleChange=(e)=>{
             setValue((prevState)=>({...prevState,[e.target.name]:e.target.value}))
     }
@@ -16,9 +19,12 @@ const Cart=(props)=>{
         e.preventDefault();
         const order={
             name:value.name,
-            email:value.email
+            email:value.email,
+            items:cartItems
         }
         setOrder(order)
+        postOrder(dispatch,order)
+        setShowForm(false)
     
     }
     const closeModal=()=>{
@@ -55,7 +61,7 @@ const Cart=(props)=>{
                 cartItems.length!==0&&(
                  <div className="cart-footer"> 
                  <div className="total">Total :${cartItems.reduce((acc,p)=>{
-                    return acc+p.price
+                    return acc+(p.price*p.qty)
                  },0)}</div>
                  <button onClick={()=>setShowForm(true)}> select Products </button>
                  </div>

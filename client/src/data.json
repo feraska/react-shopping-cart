@@ -6,8 +6,11 @@
         "desc":"good",
         "price":30,
         "sizes":["S","M"]
+       
 
-    },
+        },
+
+
     {
         "id":"id2",
         "title":"product2",

@@ -1,4 +1,5 @@
 //no sql database
+require('dotenv').config()
 const connect=require('./config/db')
 const express=require('express');
 var cors = require('cors');
@@ -13,10 +14,16 @@ app.use('/',productRouter);
 app.use('/',orderRouter);
 connect()
 //model
+if(process.env.NODE_ENV==='production'){
+    app.use('/',express.static('public'));
+    app.get('/',(req,res)=>res.sendFile(__dirname+"/public/index.html"))
+}
+else{
+    app.get('/',(req,res)=>res.send("API running"))
+}
 
 
 
-
-app.listen(5000,()=>{
+app.listen(process.env.PORT||5000,()=>{
 console.log('server running')
 })

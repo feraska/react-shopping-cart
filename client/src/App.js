@@ -18,6 +18,9 @@ import Orders from './pages/Order/Orders';
 import './components/Header/Header.scss'
 import './components/Footer/Footer.scss'
 import NavBar from './components/NavBar/NavBar';
+import Test from './pages/Logout/Logout';
+import Register from './components/Register/Register';
+import Login from './components/Login/Login';
 function App() {
  
   return (
@@ -27,8 +30,11 @@ function App() {
       
       <NavBar/>
       <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/orders' element={<Orders/>} />
+        <Route path='/' element={<Home/>} exact />
+        <Route path='/orders' element={<Orders/>} exact />
+        <Route path='/logout' element={<Test/>} exact />
+        <Route path='/register' element={<Register/>} exact />
+        <Route path='/login' element={<Login/>} exact />
       </Routes>
      
      <Footer/>

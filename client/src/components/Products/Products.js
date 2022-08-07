@@ -5,13 +5,25 @@ import ProductModal from "./ProductModal"
 import{useSelector,useDispatch} from "react-redux";
 import { fetchProducts } from "../../store/productSlice";
 import {getAllProduct} from "../../store/productApi"
-
+import getProduct, { action, getProducts } from "../../store/getProduct";
+import {productFilterSize} from "../../store/productFilterSize";
+var check=false;
 const Products=(props)=>{
-const {products}=props;
+//const {products}=props;
 const {addToCart}=props;
 const [product,setProduct]=useState(false);
 //const products=useSelector(state=>state.product.data);
-//const dispatch = useDispatch();
+const dispatch = useDispatch();
+const products=useSelector(state=>state.fil.data);
+//const fil=useSelector(state=>state.fil.data);
+
+
+useEffect(()=>{
+    dispatch((productFilterSize({"sizes":"ALL"})))
+    
+   // action('a')
+  
+},[])
 
 const openModal=(product)=>{
   //  handle();
@@ -36,15 +48,16 @@ const closeModal=()=>{
             {products.map(product=>(
             <div key={product.id}>
                 <div className="products-item">
+                    <br/>
                     <img src={product.imageUrl} alt={product.title} onClick={()=>openModal(product)}/>
                     <div className="product-desc">
                     <p>{product.title}</p>
-                    <span>{product.price}</span>
+                    <p>{product.price}</p>
                     </div>
                     <button onClick={()=>addToCart(product)}>Add to Cart</button>
+                 <br/>
                 </div>
                 
-
             </div>
           
          ))}

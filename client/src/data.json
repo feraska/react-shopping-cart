@@ -4,7 +4,7 @@
         "title":"product1",
         "imageUrl":"images/id1.jpg",
         "desc":"good",
-        "price":30,
+        "price":60,
         "sizes":["S","M"]
        
 
@@ -16,7 +16,28 @@
         "title":"product2",
         "imageUrl":"images/id1.jpg",
         "desc":"good",
-        "price":20,
+        "price":90,
+        "sizes":["L"]
+
+    },
+    {
+        "id":"id3",
+        "title":"product3",
+        "imageUrl":"images/id1.jpg",
+        "desc":"good",
+        "price":70,
+        "sizes":["S","M"]
+       
+
+        },
+
+
+    {
+        "id":"id4",
+        "title":"product4",
+        "imageUrl":"images/id1.jpg",
+        "desc":"good",
+        "price":50,
         "sizes":["L"]
 
     }

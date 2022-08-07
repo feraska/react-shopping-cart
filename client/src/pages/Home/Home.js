@@ -11,10 +11,15 @@ import {  useDispatch, useSelector } from 'react-redux';
 import { getAllProduct } from '../../store/productApi';
 import { handleFilterByOrderR, handleFilterBySizeR } from '../../store/filterApi';
 import { addToCartR,removeFromCartR } from '../../store/cartApi';
+import {useCookies} from 'react-cookie';
 
-const Home=(props)=>{
+ const Home=(props)=>{
+  const [cookies, setCookie, removeCookie] = useCookies();
+
+ // console.log(localStorage.getItem('cartItems'))
     const[cartItems,setCartItems]=useState(JSON.parse(localStorage.getItem('cartItems'))||[]);
-
+ // console.log(localStorage.getItem('cartItems'))
+  
     var data=useSelector(state=>state.product.data);
     const filter=useSelector(state=>state.filter.data);
     const cart=useSelector(state=>state.cart.data);
@@ -23,15 +28,15 @@ const Home=(props)=>{
         getAllProduct(dispatch)
         },[])
     const[products,setProducts]= useState(data);
-   useEffect(()=>{
-   setProducts(data)
-    },[data])
-    useEffect(()=>{
-       setProducts(filter)
+  //  useEffect(()=>{
+  //  setProducts(data)
+  //   },[data])
+  //   useEffect(()=>{
+  //      setProducts(filter)
        
      
-    },[filter])
-    
+  //   },[filter])
+   
 
     const[sort,setSort]=useState("");
     const [size,setSize]=useState("");
@@ -50,7 +55,7 @@ const Home=(props)=>{
     }
     const addToCart=(products)=>{
          //addToCartR(dispatch,cartItems,products)
-         const cartItemClone=[...cartItems];
+    const cartItemClone=[...cartItems];
     let isProductExist= false;
     cartItemClone.forEach(p=>{
      if(p.id===products.id){
@@ -76,6 +81,7 @@ const Home=(props)=>{
       setCartItems(cartItemsClone.filter(p=>p.id!==product.id))
     }
      useEffect(()=>{
+     
         localStorage.setItem('cartItems',JSON.stringify(cartItems))
      })
     return(

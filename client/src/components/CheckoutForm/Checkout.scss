@@ -53,7 +53,11 @@ button{
     background-color: #ddd;
     left: 0;
     padding: 30px;
-
+    .register{
+        color:red;
+        cursor: pointer;
+        text-decoration: underline;
+    }
     form{
         width: 60%;
         margin: auto;

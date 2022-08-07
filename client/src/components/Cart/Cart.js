@@ -1,32 +1,60 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Checkout from "../CheckoutForm/Checkout";
 import "./Cart.scss"
 import { Bounce } from "react-awesome-reveal";
 import Modal from "react-modal"
 import CartModal from "./CartModal";
 import { getOrder, postOrder } from "../../store/orderApi";
+import { postOrders } from "../../store/postOrder";
 import { useDispatch } from "react-redux";
+import axios from "axios";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 const Cart=(props)=>{
     const [order,setOrder]=useState("");
     const[showForm,setShowForm]=useState(false);
     const[value,setValue]=useState("");
+    const[status,setStatus]=useState("");
     const {cartItems,removeFromCart}=props;
+    const[cookies,setCookies,removeCookies]=useCookies();
+    const navigate=useNavigate();
     const dispatch=useDispatch();
     const handleChange=(e)=>{
             setValue((prevState)=>({...prevState,[e.target.name]:e.target.value}))
     }
+
     const submitOrder=(e)=>{
         e.preventDefault();
         const order={
-            name:value.name,
             email:value.email,
+            password:value.password,
             items:cartItems
         }
-        setOrder(order)
-        postOrder(dispatch,order)
-        setShowForm(false)
-    
+        const user={
+            email:value.email,
+            password:value.password,
+           
+        }
+       
+        axios.post('/api/user',user).then(res=>setStatus(res.data.status));
+     
+       
+        
+        
     }
+    useEffect(()=>{
+        
+         if(status==="ok"){
+            
+             setShowForm(false)
+           
+             setCookies('email',value.email)
+   
+             navigate('/')
+          }
+  
+     },[status])
+   
     const closeModal=()=>{
         setOrder(false)
     }
@@ -37,7 +65,7 @@ const Cart=(props)=>{
         <div className="cart-title">{cartItems.length==0?'Cart Empty':
         <p>There is {cartItems.length} products in cart</p>}
         </div>
-       <CartModal cartItems={cartItems} order={order} closeModal={closeModal}/>
+       <CartModal cartItems={cartItems} order={order}  closeModal={closeModal}/>
         
         <Bounce bottom cascade>
             {cartItems.map(item=>(
@@ -63,14 +91,30 @@ const Cart=(props)=>{
                  <div className="total">Total :${cartItems.reduce((acc,p)=>{
                     return acc+(p.price*p.qty)
                  },0)}</div>
-                 <button onClick={()=>setShowForm(true)}> select Products </button>
+                 <button onClick={
+                    ()=>{
+                        if(cookies.email){
+                          //  setShowForm(false)
+                            setOrder(true)
+                          
+                            
+                        }
+                        else{
+                            navigate('/login')
+                          //  setShowForm(true)
+                      
+                        }
+                    }
+                 }>
+                     select Products 
+                     </button>
                  </div>
                 )
         }
-       <Checkout setShowForm={setShowForm}
+       {/* <Checkout setShowForm={setShowForm}
        submitOrder={submitOrder}
         handleChange={handleChange}
-        showForm={showForm} />
+        showForm={showForm} /> */}
        
 
         </div>

@@ -10,8 +10,10 @@ app.use(bodyParser.json());
 app.use(cors());
 const productRouter=require('./Routes/ProductRoutes');
 const orderRouter=require('./Routes/OrderRoutes');
+const userRouter=require('./Routes/UserRoutes');
 app.use('/',productRouter);
 app.use('/',orderRouter);
+app.use('/',userRouter);
 connect()
 //model
 if(process.env.NODE_ENV==='production'){

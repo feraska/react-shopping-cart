@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import { words } from "./CartWords";
 const Cart=(props)=>{
     const [order,setOrder]=useState("");
     const[showForm,setShowForm]=useState(false);
@@ -73,12 +74,12 @@ const Cart=(props)=>{
                 <img src={item.imageUrl} alt=""/>
                 <div className="cart-info">
                     <div>
-                        <p> title: {item.title}</p>
-                        <p> qty: {item.qty}</p>
-                        <p> price: ${item.price}</p>
+                        <p> {words[localStorage.getItem('lang')].title}: {item.title}</p>
+                        <p> {words[localStorage.getItem('lang')].qty}: {item.qty}</p>
+                        <p> {words[localStorage.getItem('lang')].price}: ${item.price}</p>
                 
                     </div>
-                    <button onClick={()=>removeFromCart(item)}>Remove</button>
+                    <button onClick={()=>removeFromCart(item)}>{words[localStorage.getItem('lang')].remove}</button>
                 </div>
             </div>
             ))}
@@ -106,17 +107,12 @@ const Cart=(props)=>{
                         }
                     }
                  }>
-                     select Products 
+                    {words[localStorage.getItem('lang')].selPro}
                      </button>
                  </div>
                 )
         }
-       {/* <Checkout setShowForm={setShowForm}
-       submitOrder={submitOrder}
-        handleChange={handleChange}
-        showForm={showForm} /> */}
-       
-
+    
         </div>
    
     )

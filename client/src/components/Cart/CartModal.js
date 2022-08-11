@@ -3,6 +3,7 @@ import React from 'react'
 import { useCookies } from 'react-cookie'
 import Modal from 'react-modal'
 import { useNavigate } from 'react-router-dom';
+import { words } from './CartWords';
  function CartModal(props) {
     const {cartItems,closeModal,order,orders}=props
     const navigate=useNavigate()
@@ -11,15 +12,15 @@ import { useNavigate } from 'react-router-dom';
     <Modal isOpen={order} onRequestClose={closeModal}>
 <div className="order-info">
     <span className="close-icon" onClick={closeModal}>&times;</span>
-    <p className="alert-success">Order done success</p>
+    <p className="alert-success">{words[localStorage.getItem('lang')].order}</p>
     <table>
        
         <tr>
-            <td> Email: </td>
+            <td> {words[localStorage.getItem('lang')].email}: </td>
             <td> {cookies.email} </td>
         </tr>
         <tr>
-            <td> Total: </td>
+            <td> {words[localStorage.getItem('lang')].total}: </td>
             <td> {cartItems.reduce((a,p)=>{
                 return a + (p.price*p.qty)
             },0)} </td>
@@ -31,8 +32,8 @@ import { useNavigate } from 'react-router-dom';
             <td>
                 {props.cartItems.map(p=>(
                     <div className="cart-data" key={p.id}>
-                        <p>Number of product {p.qty}</p>
-                        <p>Title of product {p.title}</p>
+                        <p>{words[localStorage.getItem('lang')].numPro} {p.qty}</p>
+                        <p>{words[localStorage.getItem('lang')].titlePro} {p.title}</p>
                     </div>
                 ))}
             </td>

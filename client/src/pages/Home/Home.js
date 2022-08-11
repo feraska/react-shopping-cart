@@ -25,6 +25,7 @@ import {useCookies} from 'react-cookie';
     const cart=useSelector(state=>state.cart.data);
     const dispatch = useDispatch();
     useEffect(()=>{
+     
         getAllProduct(dispatch)
         },[])
     const[products,setProducts]= useState(data);

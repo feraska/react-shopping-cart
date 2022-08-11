@@ -3,46 +3,30 @@ import "./Filter.scss"
 import { Flip } from "react-awesome-reveal";
 import { useSelector,useDispatch } from "react-redux";
 import {  } from "react-redux";
-import { handleFilterBySize } from "../../store/filterApi";
+
 import {productFilterSize} from "../../store/productFilterSize";
-import getProducts from "../../store/getProduct";
-import { useCallback } from "react";
+
 import { sortByOrder } from "../../store/productFilterSize";
+import { words } from "./FilterWords";
 const Filter=(props)=>{
  
     const dispatch = useDispatch();
-    const{handleFilterBySize,size}=props;
-    const{handleFilterByOrder,sort}=props;
+    
     const products=useSelector(state=>state.fil.data);
     const inputEl = useRef(null); 
-   // const fil=useSelector(state=>state.fil.data);
-    //console.log(fil)
-   // console.log(products)
-   
-   // const{productsNumber}=props;
+
    const productsNumber=products.length;
 
-    const handle=()=>{
-     //  handleFilterBySize(dispatch,products,value.current.value)
-    }
-    // const handleChange = useCallback(
-    //   (e) => {
-    //     const { value } = e.target;
-    //     dispatch(productFilterSize({"sizes":value}))
-    //     console.log(value)
-    //   },
-    //   [dispatch],
-    // );
        
     
     return(
      <Flip className="filter-wrapper" left>
            <div >
           
-            <h2 className="filter-title">Filter</h2>
-            <div className="num-of-products">Number of Products: {productsNumber}</div>
+            <h2 className="filter-title">{words[localStorage.getItem('lang')].filter}</h2>
+            <div className="num-of-products">{words[localStorage.getItem('lang')].numProc}: {productsNumber}</div>
             <div className="filter-by-size">
-            <span>Filter</span>
+            <span>{words[localStorage.getItem('lang')].filter}</span>
             <select className="filter-select"   
             onChange={(e)=> dispatch(productFilterSize(
               {
@@ -50,7 +34,7 @@ const Filter=(props)=>{
                 "sort":inputEl.current.value
               }
               ))} >
-                <option value="ALL">ALL</option>
+                <option value="ALL">{words[localStorage.getItem('lang')].all}</option>
                 <option value="XS">XS</option>
                 <option value="S">S</option>
                 <option value="M">M</option>
@@ -61,11 +45,11 @@ const Filter=(props)=>{
             </div>
 
             <div className="filter-by-order">
-            <span>Order</span>
+            <span>{words[localStorage.getItem('lang')].order}</span>
             <select className="filter-select" onChange={(e)=>dispatch(sortByOrder( e.target.value)) } ref={inputEl}>
-                <option value="latest">Latest</option>
-                <option value="lowest">Lowest</option>
-                <option value="highest">Highest</option>
+                <option value="latest">{words[localStorage.getItem('lang')].latest}</option>
+                <option value="lowest">{words[localStorage.getItem('lang')].lowest}</option>
+                <option value="highest">{words[localStorage.getItem('lang')].highest}</option>
             </select>
             </div>
 

@@ -1,0 +1,20 @@
+export const words={
+    eng:{
+        id:"id",
+        email:"email",
+        items:"items",
+        qty:"qty",
+    },
+    ar:{
+        id:"id",
+        email:"ايميل",
+        items:"عناصر",
+        qty:"كميه",
+    },
+    heb:{
+        id:"id",
+        email:"אימייל",
+        items:"פרטים",
+        qty:"כמות",
+    }
+}

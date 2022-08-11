@@ -1,0 +1,38 @@
+export const words={
+    eng:{
+        title:"title",
+        qty:"qty",
+        price:"price",
+        remove:"remove",
+        selPro:"select product",
+        order:"Order done success",
+        email:"email",
+        total:"Total",
+        numPro:"Number of product",
+        titlePro:"Title of product",
+    },
+    ar:{
+        title:"عنوان",
+        qty:"كميه",
+        price:"سعر",
+        remove:"ازاله",
+        selPro:"حدد منتج",
+        order:"تم الطلب بنجاح",
+        email:"ايميل",
+        total:"مجموع", 
+        numPro:"عدد المنتوجات",
+        titlePro:"عنوان المنتج",
+    },
+    heb:{
+        title:"כותרת",
+        qty:"כמות",
+        price:"מחיר",
+        remove:"מחיקה",
+        selPro:"בחר מוצר",
+        order:"ההזמנה בוצעה בהצלחה",
+        email:"אימייל",
+        total:"סך הכל",
+        numPro:"מספר המוצרים",
+        titlePro:"כותרת המוצר", 
+    }
+}

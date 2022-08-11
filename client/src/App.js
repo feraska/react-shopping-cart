@@ -3,7 +3,7 @@ import './App.scss';
 
 import Header from './components/Header/Header';
 import Footer from "./components/Footer/Footer";
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 //import data from "./data.json"
 import Products from './components/Products/Products';
 import Filter from './components/Filter/Filter';
@@ -22,7 +22,20 @@ import Test from './pages/Logout/Logout';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 function App() {
- 
+  useMemo(()=>{
+   
+    if(localStorage.getItem('lang')==null){
+        localStorage.setItem('lang','eng')
+       // window.location.reload(false)
+    }
+    if(localStorage.getItem('lang')==='eng'){
+      document.body.style.direction='ltr'
+    }
+    else{
+      document.body.style.direction='rtl'
+    }
+  
+},[localStorage.getItem('lang')])
   return (
     <BrowserRouter>
     <Provider store={store}>

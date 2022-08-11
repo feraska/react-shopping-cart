@@ -7,6 +7,7 @@ import { fetchProducts } from "../../store/productSlice";
 import {getAllProduct} from "../../store/productApi"
 import getProduct, { action, getProducts } from "../../store/getProduct";
 import {productFilterSize} from "../../store/productFilterSize";
+import { words } from "./ProductsWords";
 var check=false;
 const Products=(props)=>{
 //const {products}=props;
@@ -15,20 +16,18 @@ const [product,setProduct]=useState(false);
 //const products=useSelector(state=>state.product.data);
 const dispatch = useDispatch();
 const products=useSelector(state=>state.fil.data);
-//const fil=useSelector(state=>state.fil.data);
+
 
 
 useEffect(()=>{
     dispatch((productFilterSize({"sizes":"ALL"})))
     
-   // action('a')
+  
   
 },[])
 
 const openModal=(product)=>{
-  //  handle();
-   // console.log(p)
-   // console.log(p);
+  
    
     
     setProduct(product)
@@ -36,15 +35,13 @@ const openModal=(product)=>{
 const closeModal=()=>{
     setProduct(false)
 }
- //   useEffect(()=>{
-     //   getAllProduct(dispatch)
- //   })
+ 
     return(
         <Bounce className="products-wrapper" left cascade>
         
         
          <div className='products-wrapper'>
-            {/* <button></button> */}
+           
             {products.map(product=>(
             <div key={product.id}>
                 <div className="products-item">
@@ -54,7 +51,7 @@ const closeModal=()=>{
                     <p>{product.title}</p>
                     <p>{product.price}</p>
                     </div>
-                    <button onClick={()=>addToCart(product)}>Add to Cart</button>
+                    <button onClick={()=>addToCart(product)}>{words[localStorage.getItem('lang')].add}</button>
                  <br/>
                 </div>
                 

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOrders } from '../../store/getOrder'
-//import { getOrder } from '../../store/orderApi'
+
 import "./Orders.scss"
+import { words } from './OrdersWords'
 
  const Orders=()=> {
     const dispach=useDispatch();
@@ -26,9 +27,9 @@ import "./Orders.scss"
             orders.length!=0 &&   
             <tr>
                 
-                <td> id </td>
-                <td> email </td>
-                <td> items </td>
+                <td> {words[localStorage.getItem('lang')].id} </td>
+                <td> {words[localStorage.getItem('lang')].email} </td>
+                <td> {words[localStorage.getItem('lang')].items} </td>
                 </tr>
  }
             
@@ -41,7 +42,7 @@ import "./Orders.scss"
                         <td>{order._id}</td>
                         <td>{order.email}</td>
                         <td>{order.items.map(item=>(
-                            <p>{item.title} ,qty {item.qty}</p>
+                            <p>{item.title} ,{words[localStorage.getItem('lang')].qty} {item.qty}</p>
                         ))}</td>
                     </tr>
                 ))}

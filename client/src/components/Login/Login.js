@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Input from "../Input/Input"
 import Register from "../Register/Register";
 import './Login.scss'
+import { words } from "./LoginWords";
 
 const Login=()=>{
     const[status,setStatus]=useState("");
@@ -30,34 +31,29 @@ const Login=()=>{
             setCookies('email',value.email);
             axios.post('/api/user/name',
             {email:value.email}).then( res=>setCookies("name",res.data[0].firstName))
-       //     setCookies("name",name.firstName+" "+name.lastName)
-          //  console.log("name",name)
+       
             navigate('/');
         }
     },[status])
-    useEffect(()=>{
-       // console.log("name",name)
-       
-       
-    },[name])
+   
     return(
         <div className="login-form">
         <form onSubmit={login}>
         <Input 
-        label="Email" 
+        label={words[localStorage.getItem('lang')].email} 
         type="email"
         name="email"
         onChange={onChange}
         />
             <Input 
-        label="Password" 
+        label={words[localStorage.getItem('lang')].password}
         type="password"
         name="password"
         onChange={onChange}
         />
         
-        <button type="submit" className="login">Login</button>
-       <span className="register" onClick={()=>setShow(true)}>Register</span>
+        <button type="submit" className="login">{words[localStorage.getItem('lang')].login}</button>
+       <span className="register" onClick={()=>setShow(true)}>{words[localStorage.getItem('lang')].register}</span>
        <Register show={show} closeModal={()=>setShow(false)}/>
         </form>
         <div>{status}</div>

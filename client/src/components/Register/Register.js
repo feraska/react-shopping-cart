@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 import Input from "../Input/Input"
 import "./Register.scss"
 import RegisterModal from "./RegisterModal"
+import { words } from "./RegisterWords"
 const Register=(props)=>{
     const[value,setValue]=useState();
     const {show,closeModal}=props;
@@ -36,9 +37,6 @@ const Register=(props)=>{
     useEffect(()=>{
         if(reg.status==="ok"){
            
-           // navigate('/login')
-          
-          // navigate('/login')
           setShowModal(false);
         }
         if(reg.status==="error"){
@@ -55,31 +53,31 @@ const Register=(props)=>{
    
     <form onSubmit={register}>
     <Input 
-    label="Email" 
+    label={words[localStorage.getItem('lang')].email}
     type="email"
     name="email"
     onChange={onChange}
     />
         <Input 
-    label="Password" 
+    label={words[localStorage.getItem('lang')].password}
     type="password"
     name="password"
     onChange={onChange}
     />
         <Input 
-    label="First Name" 
+    label={words[localStorage.getItem('lang')].firstName}
     type="text"
     name="firstName"
     onChange={onChange}
     />
         <Input 
-    label="Last Name" 
+    label={words[localStorage.getItem('lang')].lastName} 
     type="text"
     name="lastName"
     onChange={onChange}
     />
 
-    <button type="submit">Register</button>
+    <button type="submit">{words[localStorage.getItem('lang')].register}</button>
     {
         reg&&
     <div>{reg.status}</div>

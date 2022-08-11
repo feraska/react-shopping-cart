@@ -19,6 +19,7 @@ connect()
 if(process.env.NODE_ENV==='production'){
     app.use('/',express.static('public'));
     app.get('/',(req,res)=>res.sendFile(__dirname+"/public/index.html"))
+    app.get('/login',(req,res)=>res.sendFile(__dirname+"/public/index.html"))
 }
 else{
     app.get('/',(req,res)=>res.send("API running"))

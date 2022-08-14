@@ -1,4 +1,4 @@
-import React,{useEffect, useLayoutEffect, useMemo, useRef, useState} from "react"
+import React,{useRef,} from "react"
 import "./Filter.scss"
 import { Flip } from "react-awesome-reveal";
 import { useSelector,useDispatch } from "react-redux";

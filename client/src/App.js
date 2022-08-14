@@ -3,17 +3,13 @@ import './App.scss';
 
 import Header from './components/Header/Header';
 import Footer from "./components/Footer/Footer";
-import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
-//import data from "./data.json"
-import Products from './components/Products/Products';
-import Filter from './components/Filter/Filter';
-import Cart from './components/Cart/Cart';
-import Checkout from './components/CheckoutForm/Checkout';
+import { useMemo } from 'react';
+
 import store from './store/store';
-import { Provider, useDispatch, useSelector } from 'react-redux';
-import { getAllProduct } from './store/productApi';
+import { Provider } from 'react-redux';
+
 import Home from "./pages/Home/Home"
-import {BrowserRouter, NavLink, Route,Routes} from "react-router-dom";
+import {BrowserRouter, Route,Routes} from "react-router-dom";
 import Orders from './pages/Order/Orders';
 import './components/Header/Header.scss'
 import './components/Footer/Footer.scss'

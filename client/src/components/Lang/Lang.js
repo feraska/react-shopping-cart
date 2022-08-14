@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
+
 
 const Lang=()=>{
-  const [lang,setLang]=useState(localStorage.getItem('lang')||"eng");
-  const [cookies,setCookies]=useCookies();
 return(
     <select defaultValue={localStorage.getItem('lang')} onChange={(e)=>{
         switch(e.target.value){

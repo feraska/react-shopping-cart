@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import Checkout from "../CheckoutForm/Checkout";
+
 import "./Cart.scss"
 import { Bounce } from "react-awesome-reveal";
-import Modal from "react-modal"
+
 import CartModal from "./CartModal";
-import { getOrder, postOrder } from "../../store/orderApi";
-import { postOrders } from "../../store/postOrder";
+
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useCookies } from "react-cookie";

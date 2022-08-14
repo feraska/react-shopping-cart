@@ -1,19 +1,14 @@
 import "./Products.scss"
 import Bounce from "react-awesome-reveal";
-import { useEffect, useLayoutEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import ProductModal from "./ProductModal"
 import{useSelector,useDispatch} from "react-redux";
-import { fetchProducts } from "../../store/productSlice";
-import {getAllProduct} from "../../store/productApi"
-import getProduct, { action, getProducts } from "../../store/getProduct";
 import {productFilterSize} from "../../store/productFilterSize";
 import { words } from "./ProductsWords";
-var check=false;
 const Products=(props)=>{
-//const {products}=props;
 const {addToCart}=props;
 const [product,setProduct]=useState(false);
-//const products=useSelector(state=>state.product.data);
+
 const dispatch = useDispatch();
 const products=useSelector(state=>state.fil.data);
 

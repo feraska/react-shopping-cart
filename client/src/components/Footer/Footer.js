@@ -1,5 +1,4 @@
 import React from "react"
-import { Cookies, useCookies } from "react-cookie"
 import { words } from "./FooterWords"
 import "./Footer.scss"
 const Footer=()=>{

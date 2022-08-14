@@ -1,20 +1,16 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Zoom } from "react-awesome-reveal"
-import { useCookies } from "react-cookie"
+
 import Modal from "react-modal"
-import { useNavigate } from "react-router-dom"
+
 import Input from "../Input/Input"
 import "./Register.scss"
-import RegisterModal from "./RegisterModal"
 import { words } from "./RegisterWords"
 const Register=(props)=>{
     const[value,setValue]=useState();
     const {show,closeModal}=props;
     const [showModal,setShowModal]=useState("");
-    const navigate=useNavigate();
     const [reg,setReg]=useState("");
-    const [cookies,setCookies,removeCookies]=useCookies();
     const register=(e)=>{
         e.preventDefault();
         
